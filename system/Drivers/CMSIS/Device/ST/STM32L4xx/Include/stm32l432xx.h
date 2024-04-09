@@ -911,9 +911,14 @@ typedef struct
 /** @addtogroup Peripheral_memory_map
   * @{
   */
-#define FLASH_BASE            (0x08000000UL) /*!< FLASH(up to 256 KB) base address */
-#define FLASH_END             (0x0803FFFFUL) /*!< FLASH END address                */
 #define FLASH_BANK1_END       (0x0803FFFFUL) /*!< FLASH END address of bank1       */
+#define FLASH_BASE            (0x08000000UL) /*!< FLASH(up to 256 KB) base address */
+#if defined(ARDUINO_GENERIC_L432KBUX)
+  #define FLASH_END             (0x0801FFFFUL) /*!< FLASH END address                */
+#endif
+#if defined(ARDUINO_GENERIC_L432KCUX)
+  #define FLASH_END             (0x0803FFFFUL) /*!< FLASH END address                */
+#endif
 #define SRAM1_BASE            (0x20000000UL) /*!< SRAM1(up to 48 KB) base address  */
 #define SRAM2_BASE            (0x10000000UL) /*!< SRAM2(16 KB) base address */
 #define PERIPH_BASE           (0x40000000UL) /*!< Peripheral base address */
